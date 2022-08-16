@@ -4,6 +4,9 @@ import { TableResult } from './TableResult'
 import { ShareButton } from '../../../ShareButton/ShareButton'
 import { useSelector } from 'react-redux'
 
+import { dispatchGuards } from '../../../../algo/dispatchGuards'
+
+
 export const GuardsResult = () => {
     const guardsResult = useSelector((state) => state.guardsResult.guards)
 
@@ -14,7 +17,7 @@ export const GuardsResult = () => {
                     <hr />
                     <div>
                         <div className="row">
-                            < Button variant="contained" className={classesButton.margin} onClick={(e) => calculatePersons(true)} endIcon={<ExposureIcon style={{ marginRight: "5px" }}></ExposureIcon>} >
+                            < Button variant="contained" className={classesButton.margin} onClick={() => dispatchGuards()} endIcon={<ExposureIcon style={{ marginRight: "5px" }}></ExposureIcon>} >
                                 הגרל שוב
                             </Button>
                             <Button

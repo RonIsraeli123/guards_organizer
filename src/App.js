@@ -1,7 +1,7 @@
 import './App.css';
 
-import MainForm from './components/MainForm/MainForm';
-import ContactDetails from './components/ContactDetails/ContactDetails';
+import { MainForm } from './components/MainForm/MainForm';
+import { ContactDetails } from './components/ContactDetails/ContactDetails';
 
 const App = () => {
   return (
