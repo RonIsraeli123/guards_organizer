@@ -11,7 +11,7 @@ export const calculateGuards = (
 ) => {
   let shuffledNames = personsNames;
   if (isRandom) {
-    shuffledNames = arrayShuffle(personsNames);
+    shuffledNames = [...arrayShuffle([...personsNames])];
   }
   let counter = 0;
   let guards = [];

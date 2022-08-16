@@ -2,44 +2,46 @@ import React from 'react'
 
 import TextField from '@mui/material/TextField';
 
-export const TimeFrameInputs = (props) => {
-    const useStylesDateInput = makeStyles((theme) => ({
-        container: {
-            display: 'flex',
-            flexWrap: 'wrap',
-            alignItems: 'center',
-            justifyContent: 'center'
-        },
-        textField: {
-            marginLeft: theme.spacing(1),
-            marginRight: theme.spacing(1),
-            width: 200,
-        },
-    }));
+import { useSelector, useDispatch } from 'react-redux'
+import { setStartTimes, setEndTimes } from '../../../../redux/slices/TimeFrameSlice'
 
-    const classesDateInput = useStylesDateInput();
+import { placeHolderStartTime, placeHolderEndTime } from '../../../../config/time/timeSetting'
+
+export const TimeFrameInputs = () => {
+    const startTime = useSelector((state) => state.timeFrame.startTime)
+    const endTime = useSelector((state) => state.timeFrame.endTime)
+
+    const dispatch = useDispatch()
+
+    const onChangeStartTime = (e) => {
+        dispatch(setStartTimes(e.target.value))
+    }
+
+    const onChangeEndTime = (e) => {
+        dispatch(setEndTimes(e.target.value))
+    }
 
     return (
         <div className="row">
             <form className={classesDateInput.container} noValidate>
                 <TextField
-                    className={`element ${classesDateInput.textField}`}
+                    className={`element`}
                     id="datetime-local"
-                    label="תחילת זמן "
+                    label={`${placeHolderStartTime}`}
                     type="datetime-local"
-                    onChange={(e) => props.onChangeStartTime(e)}
-                    value={props.firstValue}
+                    onChange={onChangeStartTime(e)}
+                    value={startTime}
                     InputLabelProps={{
                         shrink: true,
                     }}
                 />
                 <TextField
-                    className={`element ${classesDateInput.textField}`}
+                    className={`element`}
                     id="datetime-local"
-                    label="סיום זמן"
+                    label={`${placeHolderEndTime}`}
                     type="datetime-local"
-                    onChange={(e) => props.onChangeEndTime(e)}
-                    value={props.secondValue}
+                    onChange={onChangeEndTime(e)}
+                    value={endTime}
                     InputLabelProps={{
                         shrink: true,
                     }}

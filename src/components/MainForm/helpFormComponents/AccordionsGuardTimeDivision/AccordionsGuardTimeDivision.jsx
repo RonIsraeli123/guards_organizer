@@ -31,7 +31,7 @@ export const AccordionsGuardTimeDivision = () => {
                     <Typography >חלוקה זמן שווה </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <GuardOrder />
+                    <GuardOrder evenTime={true} />
                 </AccordionDetails>
             </Accordion>
             <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
@@ -44,7 +44,7 @@ export const AccordionsGuardTimeDivision = () => {
                 </AccordionSummary>
                 <AccordionDetails>
                     <ShiftTime />
-                    <GuardOrder />
+                    <GuardOrder evenTime={false} />
                 </AccordionDetails>
             </Accordion>
         </div>
