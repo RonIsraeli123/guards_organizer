@@ -1,20 +1,22 @@
 import React from 'react'
 
-import Accordion from '@mui/core/Accordion';
-import AccordionDetails from '@mui/core/AccordionDetails';
-import AccordionSummary from '@mui/core/AccordionSummary';
-import Typography from '@mui/core/Typography';
+import Accordion from '@mui/material/Accordion';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import Typography from '@mui/material/Typography';
 
-import ExpandMoreIcon from '@mui/icons/ExpandMore';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
+
 
 import { DivisionDescripsion } from './helpAccordionsGuardTimeDivision/DivisionDescripsion'
 import { ShiftTime } from './helpAccordionsGuardTimeDivision/ShiftTime'
-import { GuardOrder } from './helpAccordionsGuardTimeDivision/GuardsOrder'
+import { GuardsOrder } from './helpAccordionsGuardTimeDivision/GuardsOrder'
 
-export const AccordionsGuardTimeDivision = () => {
+export const AccordionsGuardTimeDivision = (props) => {
     const [expanded, setExpanded] = React.useState(false);
 
-    const handleChange = (panel) => (isExpanded) => {
+    const handleChange = (panel) => (e, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
     };
 
@@ -31,7 +33,7 @@ export const AccordionsGuardTimeDivision = () => {
                     <Typography >חלוקה זמן שווה </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <GuardOrder evenTime={true} />
+                    <GuardsOrder setGuards={props.setGuards} isEvenTime={true} />
                 </AccordionDetails>
             </Accordion>
             <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
@@ -44,7 +46,7 @@ export const AccordionsGuardTimeDivision = () => {
                 </AccordionSummary>
                 <AccordionDetails>
                     <ShiftTime />
-                    <GuardOrder evenTime={false} />
+                    <GuardsOrder setGuards={props.setGuards} isEvenTime={false} />
                 </AccordionDetails>
             </Accordion>
         </div>

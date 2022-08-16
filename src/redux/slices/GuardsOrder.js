@@ -10,10 +10,10 @@ export const GuardsOrder = createSlice({
   initialState,
   reducers: {
     setIsEvenTime: (state, action) => {
-      state.isEvenTime == action.payload;
+      state.isEvenTime = action.payload;
     },
     setIsRandomPalces: (state, action) => {
-      state.isRandomPalces == action.payload;
+      state.isRandomPalces = action.payload;
     },
   },
 });

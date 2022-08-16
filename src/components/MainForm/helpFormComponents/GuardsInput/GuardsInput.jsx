@@ -1,17 +1,18 @@
 import React, { useState } from 'react'
 
 import TextField from '@mui/material/TextField';
-import Grid from '@mui/core/Grid';
-import Tooltip from '@mui/core/Tooltip';
-import AddCircleIcon from '@mui/icons/AddCircle';
-import AccountCircle from '@mui/icons/AccountCircle';
+import Grid from '@mui/material/Grid';
+import Tooltip from '@mui/material/Tooltip';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import Chip from '@mui/material/Chip';
 
 import { useSelector, useDispatch } from 'react-redux'
-import { addGuardName } from '../../../../redux/slices/GuardsNamesSlice'
+import { addGuardName, deleteGuardName } from '../../../../redux/slices/GuardsNamesSlice'
 
 export const GuardsInput = () => {
 
-    const guardsNames = useSelector((state) => state.GuardsNames.guardsNames)
+    const guardsNames = useSelector((state) => state.guardsNames.guardsNames)
 
     const dispatch = useDispatch()
 
@@ -27,6 +28,7 @@ export const GuardsInput = () => {
         }
         dispatch(addGuardName(guardName))
         setGuardName('');
+        return;
     }
 
     const handleKeyDown = (e) => {
@@ -42,12 +44,27 @@ export const GuardsInput = () => {
                     <AccountCircle />
                 </Grid>
                 <Grid item>
-                    <TextField className="element" id="input-with-icon-grid" label="שם שומר" value={guardName} onChange={setGuardName(e.target.value)} onKeyDown={handleKeyDown} />
+                    <TextField className="element" id="input-with-icon-grid" label="שם שומר" value={guardName} onChange={(e) => setGuardName(e.target.value)} onKeyDown={handleKeyDown} />
                 </Grid>
             </Grid>
             <Tooltip title="הוספת שומר">
-                <AddCircleIcon style={{ fontSize: "2rem" }} onClick={(e) => { addToGuards(e); ref.current.focus(); }} ></AddCircleIcon>
+                <AddCircleIcon style={{ fontSize: "2rem" }} onClick={(e) => { addToGuards(e) }} ></AddCircleIcon>
             </Tooltip>
+            {guardsNames.length > 0 &&
+                <div className="row" style={{ marginTop: "15px" }}>
+                    {guardsNames.map((name, index) => (
+                        <div key={index}>
+                            <Chip
+                                className=""
+                                size="small"
+                                label={`(${index + 1}) ${name}`}
+                                onDelete={() => dispatch(deleteGuardName(guardName))}
+                                color="default"
+                            />
+                        </div>
+                    ))}
+                </div>
+            }
         </div >
     )
 }

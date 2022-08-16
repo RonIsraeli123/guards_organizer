@@ -23,13 +23,13 @@ export const TimeFrameInputs = () => {
 
     return (
         <div className="row">
-            <form className={classesDateInput.container} noValidate>
+            <form noValidate>
                 <TextField
                     className={`element`}
                     id="datetime-local"
                     label={`${placeHolderStartTime}`}
                     type="datetime-local"
-                    onChange={onChangeStartTime(e)}
+                    onChange={(e) => onChangeStartTime(e)}
                     value={startTime}
                     InputLabelProps={{
                         shrink: true,
@@ -40,12 +40,13 @@ export const TimeFrameInputs = () => {
                     id="datetime-local"
                     label={`${placeHolderEndTime}`}
                     type="datetime-local"
-                    onChange={onChangeEndTime(e)}
+                    onChange={(e) => onChangeEndTime(e)}
                     value={endTime}
                     InputLabelProps={{
                         shrink: true,
                     }}
                 />
+
             </form>
         </div>
     )

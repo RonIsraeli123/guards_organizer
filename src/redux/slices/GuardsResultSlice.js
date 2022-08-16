@@ -9,7 +9,7 @@ export const GuardsResultSlice = createSlice({
   initialState,
   reducers: {
     setGuards: (state, action) => {
-      state.guards == action.payload;
+      state.guards = action.payload;
     },
   },
 });

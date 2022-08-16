@@ -1,1 +1,4 @@
-export const DIVISION_DESCRIPSION = 'ron israeli - ron_mail';
+export const DIVISION_DESCRIPSION = `באפשרותך לתת לנו לחלק את הזמן בין השומרים באמצעות חלוקת זמן שווה.
+או להגדיר זמן קבוע לכל משמרת, בהגדרת זמן שמירה.
+\n
+אם כל אחד שומר יותר מפעם אחת, עדיף להגדיר זמן שמירה.`;

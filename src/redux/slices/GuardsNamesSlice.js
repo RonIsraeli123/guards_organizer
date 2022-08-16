@@ -12,7 +12,7 @@ export const GuardsNamesSlice = createSlice({
       state.guardsNames.push(action.payload);
     },
     deleteGuardName: (state, action) => {
-      state.guardsNames.filter((e) => e !== action.payload);
+      state.guardsNames.splice(action.payload, 1);
     },
   },
 });

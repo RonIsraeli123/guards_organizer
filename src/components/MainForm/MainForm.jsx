@@ -1,16 +1,20 @@
-import React from 'react'
-import { GuardsInput, Headers, TimeFrameInputs, AccordionsGuardTimeDivision, GuardsResult } from './helpFormComponents/index'
+import React, { useState } from 'react'
+import { Headers, TimeFrameInputs, GuardsInput, AccordionsGuardTimeDivision, GuardsResult } from './helpFormComponents/index'
+
 export const MainForm = () => {
+    const [guards, setGuards] = useState([])
     return (
         <div>
-            <from>
+            <div>
                 <Headers />
                 <TimeFrameInputs />
                 <GuardsInput />
-                <AccordionsGuardTimeDivision />
-            </from>
+                {/* TODO: change it to redux way */}
+                <AccordionsGuardTimeDivision setGuards={setGuards} />
+            </div>
             <div>
-                <GuardsResult />
+                {guards.length > 0 && <GuardsResult guards={guards} setGuards={setGuards} />}
+
             </div>
         </div>
     )

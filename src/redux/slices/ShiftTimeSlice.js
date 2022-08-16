@@ -10,10 +10,10 @@ export const ShiftTimeSlice = createSlice({
   initialState,
   reducers: {
     setShiftTime: (state, action) => {
-      state.shiftTime == action.payload;
+      state.shiftTime = action.payload;
     },
     setType: (state, action) => {
-      state.type == action.payload;
+      state.type = action.payload;
     },
   },
 });

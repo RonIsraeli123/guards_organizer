@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { CONTACT_DETAILS } from '../../../../../config/divisionDescripsion'
+import { DIVISION_DESCRIPSION } from '../../../../../config/divisionDescripsion'
 export const DivisionDescripsion = () => {
     return (
-        <div>{CONTACT_DETAILS}</div>
+        <div>{DIVISION_DESCRIPSION}</div>
     )
 }

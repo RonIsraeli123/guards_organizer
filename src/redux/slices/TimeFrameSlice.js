@@ -11,10 +11,10 @@ export const TimeFrameSlice = createSlice({
   initialState,
   reducers: {
     setStartTimes: (state, action) => {
-      state.startTime == action.payload;
+      state.startTime = action.payload;
     },
     setEndTimes: (state, action) => {
-      state.endTime == action.payload;
+      state.endTime = action.payload;
     },
   },
 });
