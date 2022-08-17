@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   shiftTime: 1,
-  type: 'hour',
+  timeUnit: 'hour',
 };
 
 export const ShiftTimeSlice = createSlice({
@@ -12,13 +12,13 @@ export const ShiftTimeSlice = createSlice({
     setShiftTime: (state, action) => {
       state.shiftTime = action.payload;
     },
-    setType: (state, action) => {
-      state.type = action.payload;
+    setTimeUnit: (state, action) => {
+      state.timeUnit = action.payload;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setShiftTime, setType } = ShiftTimeSlice.actions;
+export const { setShiftTime, setTimeUnit } = ShiftTimeSlice.actions;
 
 export default ShiftTimeSlice.reducer;

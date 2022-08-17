@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { setShiftTime, setType } from '../../../../../redux/slices/ShiftTimeSlice'
+import { setShiftTime, setTimeUnit } from '../../../../../redux/slices/ShiftTimeSlice'
 
 import TextField from '@mui/material/TextField';
 
@@ -26,7 +26,7 @@ export const ShiftTime = () => {
         className="select"
         placeholder={timeUnit === "hour" ? 'שעות' : 'דקות'}
         value={timeUnit}
-        onChange={(e) => dispatch(setType(e.value))}
+        onChange={(e) => dispatch(setTimeUnit(e.value))}
         options={options}
         defaultValue={options[1]}
       />

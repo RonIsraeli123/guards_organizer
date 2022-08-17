@@ -1,20 +1,27 @@
 import React from 'react'
-import { WhatsappShareButton, WhatsappIcon } from "react-share";
-import Button from '@mui/core/Button';
+
+import { shareTextToWhatsApp } from 'share-text-to-whatsapp';
+
+import Button from '@mui/material/Button';
+
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
 export const ShareButton = (props) => {
-    const { guardsView } = props;
+
     const generateToText = () => {
         let message = `*רשימת שמות:*\n`;
-        guardsView.map(x => {
-            message += `${x.startTime.format('HH:mm')} - ${x.endTime.format('HH:mm')}  *${x.name.trim()}* \n`;
+        props.guards.forEach(guard => {
+            message += `${guard.startTime.format('HH:mm')} - ${guard.endTime.format('HH:mm')}  *${guard.name.trim()}* \n`;
         });
-        return message;
+        shareTextToWhatsApp(message);
     }
+
 
     return (
         <div>
-            <WhatsappShareButton url={generateToText()}><Button variant="contained" style={{ direction: "ltr" }} > <WhatsappIcon size={25} round={true}></WhatsappIcon>  שתף עם חבריך  </Button></WhatsappShareButton >
+            <Button className='byOrderButton' variant="contained" onClick={generateToText} endIcon={<WhatsAppIcon style={{ marginRight: "5px" }}></WhatsAppIcon>}>
+                שתף בווצאפ
+            </Button>
         </div >
     )
 }

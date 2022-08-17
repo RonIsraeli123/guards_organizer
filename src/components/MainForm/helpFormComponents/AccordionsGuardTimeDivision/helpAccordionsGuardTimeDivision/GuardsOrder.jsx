@@ -13,7 +13,7 @@ export const GuardsOrder = (props) => {
     const startTime = useSelector((state) => state.timeFrame.startTime);
     const endTime = useSelector((state) => state.timeFrame.endTime);
     const shiftTime = useSelector((state) => state.shiftTime.shiftTime);
-    const timeUnit = useSelector((state) => state.shiftTime.type);
+    const timeUnit = useSelector((state) => state.shiftTime.setTimeUnit);
 
     const dispatch = useDispatch()
 

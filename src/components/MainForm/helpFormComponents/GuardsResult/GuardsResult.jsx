@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { TableResult } from './TableResult'
-// import { ShareButton } from '../../../ShareButton/ShareButton'
+import { ShareButton } from '../../../ShareButton/ShareButton'
 import { useSelector } from 'react-redux'
 // import { setGuards } from '../../../../redux/slices/GuardsResultSlice'
 
@@ -44,7 +44,7 @@ export const GuardsResult = (props) => {
                             < Button variant="contained" onClick={() => window.location.reload(false)} endIcon={<RefreshIcon style={{ marginRight: "5px" }}></RefreshIcon>} >
                                 הכל מהתחלה
                             </Button>
-                            {/* <ShareButton guardsView={guardsResult}></ShareButton> */}
+                            <ShareButton guards={props.guards}></ShareButton>
                         </div>
                         <TableResult guards={props.guards} />
                     </div>
