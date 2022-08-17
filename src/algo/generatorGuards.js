@@ -19,14 +19,14 @@ export const guardsGeneratorResult = (
   if (isEvenTime) {
     const countGuards = guardsNames.length;
     const sumTime = moment(endTime).diff(moment(startTime), timeUnit);
-    const evenguardTime =
+    const evenGuardTime =
       sumTime / countGuards !== 0
-        ? Math.floor(sumTime / countGuards)
+        ? sumTime / countGuards
         : Math.ceil(sumTime / countGuards);
-    if (evenguardTime > 6 * 60) {
+    if (evenGuardTime > 6 * 60) {
       alert('זמן השמירה יצא גדול מ6 שעות, אולי כדאי להגדיר זמן שמירה?');
     }
-    shiftTime = evenguardTime;
+    shiftTime = evenGuardTime;
   }
   const calculateGuardsResult = calculateGuards(
     guardsNames,

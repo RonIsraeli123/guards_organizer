@@ -1,15 +1,12 @@
 html {
   background-color: black;
 }
+
 .all {
   background-image: url('./images/armyColor.jpg');
   background-repeat: repeat;
   background-size: cover;
   min-height: 100vh;
-}
-
-.MuiTableCell-head {
-  font-weight: bold !important;
 }
 
 .select {
@@ -18,15 +15,13 @@ html {
   width: 8%;
 }
 
-.app {
+.mainForm {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
 }
-.MuiButton-root {
-  padding: 3px 10px !important;
-}
+
 .element {
   margin: 10px;
 }
@@ -37,24 +32,35 @@ html {
   justify-content: center;
   margin-top: 5%;
 }
+
 .row {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
 }
-.MuiFormControl-root {
-  margin: 10px !important;
-}
-.MuiInputBase-input {
-  text-align: right;
-}
-.randonGuard {
+
+.byOrderButton {
   margin-left: 10px !important;
 }
+
 .marginTop {
   margin-top: 10px;
 }
-.marginBottom {
-  margin-bottom: 10px;
+
+
+.MuiFormControl-root {
+  margin: 10px !important;
+}
+
+.MuiInputBase-input {
+  text-align: right;
+}
+
+.MuiButton-root {
+  padding: 3px 10px !important;
+}
+
+.MuiTableCell-head {
+  font-weight: bold !important;
 }

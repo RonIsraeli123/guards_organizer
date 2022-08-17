@@ -2,46 +2,46 @@ import moment from 'moment';
 import arrayShuffle from 'array-shuffle';
 
 export const calculateGuards = (
-  personsNames,
-  givenStartTime,
-  givenEndTime,
-  guardTime,
-  minuteHour,
-  isRandom
+  guardsNames,
+  startTime,
+  endTime,
+  shiftTime,
+  timeUnit,
+  isRandomOrder
 ) => {
-  let shuffledNames = personsNames;
-  if (isRandom) {
-    shuffledNames = [...arrayShuffle([...personsNames])];
+  let shuffledNames = guardsNames;
+  if (isRandomOrder) {
+    shuffledNames = [...arrayShuffle([...guardsNames])];
   }
   let counter = 0;
   let guards = [];
-  let startTime = moment(givenStartTime);
+  let startTimeMoment = moment(startTime);
   while (
-    !(moment(startTime).add(guardTime, minuteHour) > moment(givenEndTime))
+    !(moment(startTimeMoment).add(shiftTime, timeUnit) > moment(endTime))
   ) {
-    let endTime = moment(startTime).add(guardTime, minuteHour);
+    let endTime = moment(startTimeMoment).add(shiftTime, timeUnit);
     if (counter === shuffledNames.length) {
       counter = 0;
     }
     guards.push({
       name: shuffledNames[counter],
-      startTime: startTime,
+      startTime: startTimeMoment,
       endTime: endTime,
     });
-    startTime = endTime;
+    startTimeMoment = endTime;
     counter++;
   }
-  if (startTime < moment(givenEndTime)) {
+  if (startTimeMoment < moment(endTime)) {
     if (
-      moment(startTime).add(guardTime / 4, minuteHour) > moment(givenEndTime)
+      moment(startTimeMoment).add(shiftTime / 4, timeUnit) > moment(endTime)
     ) {
-      guards[counter - 1].endTime = moment(givenEndTime);
+      guards[counter - 1].endTime = moment(endTime);
     } else if (counter === shuffledNames.length) {
       counter = 0;
       guards.push({
         name: shuffledNames[counter],
-        startTime: startTime,
-        endTime: moment(givenEndTime),
+        startTimeMoment: startTimeMoment,
+        endTime: moment(endTime),
       });
     }
   }
