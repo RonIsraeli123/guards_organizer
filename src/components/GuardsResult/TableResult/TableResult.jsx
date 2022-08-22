@@ -12,26 +12,26 @@ export const TableResult = (props) => {
     return (
         <div className='row result'>
             <h2 className='resultHeader'>{RESULT_TITLE}</h2>
-            <Table aria-label="simple table">
+            <Table className='tableResult' aria-label="simple table">
                 <TableHead>
-                    <TableRow >
-                        <TableCell>{GUARD_NAME_COLUNM_TITLE}</TableCell>
-                        <TableCell>{START_SHIFT_COLUNM_TITLE}</TableCell>
-                        <TableCell>{END_SHIFT_COLUNM_TITLE}</TableCell>
+                    <TableRow>
+                        <TableCell align="left">{GUARD_NAME_COLUNM_TITLE}</TableCell>
+                        <TableCell align="left">{START_SHIFT_COLUNM_TITLE}</TableCell>
+                        <TableCell align="left">{END_SHIFT_COLUNM_TITLE}</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {props.guards.map((guard, index) => (
-                        <TableRow
-                            key={index}
-                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                        >
-                            <TableCell component="th" scope="row">
-                                {guard.name}
-                            </TableCell>
-                            <TableCell align="right">{guard.startTime.format('H:mm (MM/DD)')}</TableCell>
-                            <TableCell align="right">{guard.endTime.format('H:mm (MM/DD)')}</TableCell>
-                        </TableRow>
+                    {props.guards.map((guard, index) => (<TableRow
+                        key={index}
+                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                    >
+                        <TableCell align="left" scope="row">
+                            {guard.name}
+                        </TableCell>
+                        <TableCell align="left">{guard.startTime.format('H:mm (MM/DD)')}</TableCell>
+                        <TableCell align="left">{guard.endTime.format('H:mm (MM/DD)')}</TableCell>
+
+                    </TableRow>
                     ))}
                 </TableBody>
             </Table>
