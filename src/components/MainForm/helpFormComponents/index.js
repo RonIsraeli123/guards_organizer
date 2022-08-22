@@ -1,5 +1,4 @@
 export { Headers } from './Headers/Headers';
-export { TimeFrameInputs } from './TimeFrameInputs/TimeFrameInputs';
-export { GuardsInput } from './GuardsInput/GuardsInput';
+export { Inputs } from './Inputs/Inputs';
 export { DivisionDescripsion } from './DivisionDescripsion/DivisionDescripsion';
 export { AccordionsGuardTimeDivision } from './AccordionsGuardTimeDivision/AccordionsGuardTimeDivision';

@@ -21,7 +21,6 @@ export const GuardsInput = () => {
 
     const [guardName, setGuardName] = useState('')
 
-
     const addToGuards = () => {
         if (!guardName || !guardName.trimStart().trimEnd()) {
             return alert(INVALID_GUARD_NAME_ALERT);
@@ -49,7 +48,7 @@ export const GuardsInput = () => {
                             <AccountCircle />
                         </InputAdornment>
                     ),
-                }} className="inputs" id="outlined-basic" label={PLACEHOLDER_ADD_GUARD} value={guardName} onChange={(e) => setGuardName(e.target.value)} onKeyDown={handleKeyDown} />
+                }} className="input" id="outlined-basic" label={PLACEHOLDER_ADD_GUARD} value={guardName} onChange={(e) => setGuardName(e.target.value)} onKeyDown={handleKeyDown} />
                 <Tooltip title={TOOLTIP_TEXT}>
                     <AddCircleIcon style={{ fontSize: "2rem" }} onClick={(e) => { addToGuards(e) }} ></AddCircleIcon>
                 </Tooltip>

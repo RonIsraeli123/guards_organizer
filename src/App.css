@@ -25,8 +25,15 @@ html {
   gap: 8px;
 }
 
-.inputs {
+.input {
   margin: 10px !important;
+}
+
+.inputs{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; 
 }
 
 .row {
