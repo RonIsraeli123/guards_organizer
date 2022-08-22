@@ -19,7 +19,7 @@ export const ShareButton = (props) => {
 
     return (
         <div>
-            <Button className='byOrderButton' variant="contained" onClick={generateToText} endIcon={<WhatsAppIcon style={{ marginRight: "5px" }}></WhatsAppIcon>}>
+            <Button className='byOrderButton' color="success" variant="contained" onClick={generateToText} endIcon={<WhatsAppIcon style={{ marginRight: "5px" }}></WhatsAppIcon>}>
                 שתף בווצאפ
             </Button>
         </div >

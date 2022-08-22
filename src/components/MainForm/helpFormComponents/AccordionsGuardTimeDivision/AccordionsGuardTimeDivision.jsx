@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { EQUAL_DIVISION, UNEQUAL_DIVISION } from '../../../../config/AccordionsGuardTimeDivision/accordion'
 
@@ -10,14 +10,16 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import { ShiftTime } from './helpAccordionsGuardTimeDivision/ShiftTime'
+import { EvenTimeShift } from './helpAccordionsGuardTimeDivision/EvenTimeShift'
 import { GuardsOrder } from './helpAccordionsGuardTimeDivision/GuardsOrder'
 
 export const AccordionsGuardTimeDivision = (props) => {
-    const [expanded, setExpanded] = React.useState(false);
+    const [expanded, setExpanded] = useState(false);
 
     const handleChange = (panel) => (e, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
     };
+
 
     return (
         <div>
@@ -30,6 +32,7 @@ export const AccordionsGuardTimeDivision = (props) => {
                     <Typography >{EQUAL_DIVISION}</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
+                    <EvenTimeShift />
                     <GuardsOrder setGuards={props.setGuards} isEvenTime={true} />
                 </AccordionDetails>
             </Accordion>

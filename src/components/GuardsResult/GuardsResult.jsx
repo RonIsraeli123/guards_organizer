@@ -36,10 +36,10 @@ export const GuardsResult = (props) => {
                     <hr />
                     <div>
                         <div className="row">
-                            < Button variant="contained" onClick={() => generateAgain()} endIcon={<ExposureIcon style={{ marginRight: "5px" }}></ExposureIcon>} >
+                            < Button variant="contained" color="inherit" onClick={() => generateAgain()} endIcon={<ExposureIcon style={{ marginRight: "5px" }}></ExposureIcon>} >
                                 הגרל שוב
                             </Button>
-                            < Button variant="contained" onClick={() => window.location.reload(false)} endIcon={<RefreshIcon style={{ marginRight: "5px" }}></RefreshIcon>} >
+                            < Button variant="contained" color="inherit" onClick={() => window.location.reload(false)} endIcon={<RefreshIcon style={{ marginRight: "5px" }}></RefreshIcon>} >
                                 הכל מהתחלה
                             </Button>
                             <ShareButton guards={props.guards}></ShareButton>
