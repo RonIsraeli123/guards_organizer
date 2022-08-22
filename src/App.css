@@ -57,10 +57,13 @@ html {
 }
 
 .result{
+  max-width: 400px;
+  margin: 0 auto  !important;
+  margin-top: 1em !important;
+  margin-bottom: 1em !important;
+	float: none !important; 
   border-radius: 2px;
   background-color: white;
-  margin: 3%;
-  margin-bottom: 1em;
 }
 
 .resultHeader{
