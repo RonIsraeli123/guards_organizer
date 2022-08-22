@@ -48,6 +48,10 @@ html {
 }
 
 .evenTime{
+  margin: 0 auto  !important;
+  max-width: 50%;
+  margin-top: 1em !important;
+  margin-bottom: 1em !important;
   display: flex;
   align-items: center;
   justify-content: center;

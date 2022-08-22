@@ -12,10 +12,11 @@ export const EvenTimeShift = () => {
 
     const sumTime = moment(endTime).diff(moment(startTime), MINUTE_TIME_UNITE);
     const guardCount = guardsNames.length;
+    const shiftTime = Math.ceil(sumTime / guardCount) / 60;
 
     return (
         <div className='evenTime'>
-            {Math.ceil(sumTime / guardCount) / 60} שעות
+            {Math.round((shiftTime) * 100) / 100} שעות
         </div>
     )
 }
