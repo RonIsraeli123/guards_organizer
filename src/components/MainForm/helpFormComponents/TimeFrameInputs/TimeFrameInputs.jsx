@@ -1,11 +1,11 @@
 import React from 'react'
 
-import TextField from '@mui/material/TextField';
-
 import { useSelector, useDispatch } from 'react-redux'
 import { setStartTimes, setEndTimes } from '../../../../redux/slices/TimeFrameSlice'
 
-import { placeHolderStartTime, placeHolderEndTime } from '../../../../config/time/timeSetting'
+import { placeHolderStartTime, placeHolderEndTime } from '../../../../config/inputs/TimeFrameInputs'
+
+import TextField from '@mui/material/TextField';
 
 export const TimeFrameInputs = () => {
     const startTime = useSelector((state) => state.timeFrame.startTime)
@@ -27,7 +27,7 @@ export const TimeFrameInputs = () => {
                 <TextField
                     className='element'
                     id="datetime-local"
-                    label={`${placeHolderStartTime}`}
+                    label={placeHolderStartTime}
                     type="datetime-local"
                     onChange={(e) => onChangeStartTime(e)}
                     value={startTime}
@@ -38,7 +38,7 @@ export const TimeFrameInputs = () => {
                 <TextField
                     className='element'
                     id="datetime-local"
-                    label={`${placeHolderEndTime}`}
+                    label={placeHolderEndTime}
                     type="datetime-local"
                     onChange={(e) => onChangeEndTime(e)}
                     value={endTime}

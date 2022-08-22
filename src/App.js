@@ -1,15 +1,21 @@
+import React, { useState } from 'react';
+
+import { MainForm, GuardsResult, ContactDetails } from './components/index';
+
 import './App.css';
 
-import { MainForm } from './components/MainForm/MainForm';
-import { ContactDetails } from './components/ContactDetails/ContactDetails';
+export const App = () => {
+  // eslint-disable-next-line no-lone-blocks
+  {
+    /* TODO: change it to redux way */
+  }
+  const [guards, setGuards] = useState([]);
 
-const App = () => {
   return (
     <div className='all'>
-      <MainForm />
+      <MainForm setGuards={setGuards} />
+      <GuardsResult guards={guards} setGuards={setGuards} />
       <ContactDetails />
     </div>
   );
 };
-
-export default App;

@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { TableResult } from './TableResult'
-import { ShareButton } from '../../../ShareButton/ShareButton'
+import { TableResult } from './TableResult/TableResult'
+import { ShareButton } from './ShareButton/ShareButton'
 import { useSelector } from 'react-redux'
 // import { setGuards } from '../../../../redux/slices/GuardsResultSlice'
 
@@ -9,7 +9,7 @@ import Button from '@mui/material/Button';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import ExposureIcon from '@mui/icons-material/Exposure';
 
-import { guardsGeneratorResult } from '../../../../algo/generatorGuards'
+import { guardsGeneratorResult } from '../../algo/generatorGuards'
 
 export const GuardsResult = (props) => {
     const guardsNames = useSelector((state) => state.guardsNames.guardsNames);

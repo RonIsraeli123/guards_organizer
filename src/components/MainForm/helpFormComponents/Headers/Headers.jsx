@@ -1,5 +1,7 @@
 import React from 'react'
+
 import { MAIN_HEADER, SUB_HEADER } from '../../../../config/headers'
+
 import Typography from '@mui/material/Typography';
 
 export const Headers = () => {

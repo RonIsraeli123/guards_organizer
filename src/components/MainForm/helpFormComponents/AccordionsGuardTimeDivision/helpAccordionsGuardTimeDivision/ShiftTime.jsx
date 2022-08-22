@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 
+import Selector from 'react-select';
+
 import { useSelector, useDispatch } from 'react-redux'
 import { setShiftTime, setTimeUnit } from '../../../../../redux/slices/ShiftTimeSlice'
 
+import { GUARD_TIME } from '../../../../../config/AccordionsGuardTimeDivision/shiftTime'
+
 import TextField from '@mui/material/TextField';
-
-import Selector from 'react-select';
-
 
 export const ShiftTime = () => {
   const shiftTime = useSelector((state) => state.shiftTime.shiftTime)
@@ -21,7 +22,7 @@ export const ShiftTime = () => {
 
   return (
     <div>
-      <TextField id="input-with-icon-grid" type="number" label="זמן שמירה" value={shiftTime} onChange={(e) => dispatch(setShiftTime(e.target.value))} />
+      <TextField id="input-with-icon-grid" type="number" label={GUARD_TIME} value={shiftTime} onChange={(e) => dispatch(setShiftTime(e.target.value))} />
       <Selector
         className="select"
         placeholder={timeUnit === "hour" ? 'שעות' : 'דקות'}

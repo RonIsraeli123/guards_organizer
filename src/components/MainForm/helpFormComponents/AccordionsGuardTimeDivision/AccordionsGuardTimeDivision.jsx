@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { EQUAL_DIVISION, UNEQUAL_DIVISION } from '../../../../config/AccordionsGuardTimeDivision/accordion'
+
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -7,9 +9,6 @@ import Typography from '@mui/material/Typography';
 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-
-
-import { DivisionDescripsion } from './helpAccordionsGuardTimeDivision/DivisionDescripsion'
 import { ShiftTime } from './helpAccordionsGuardTimeDivision/ShiftTime'
 import { GuardsOrder } from './helpAccordionsGuardTimeDivision/GuardsOrder'
 
@@ -22,15 +21,13 @@ export const AccordionsGuardTimeDivision = (props) => {
 
     return (
         <div>
-            <DivisionDescripsion />
-
             <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1bh-content"
                     id="panel1bh-header"
                 >
-                    <Typography >חלוקה זמן שווה </Typography>
+                    <Typography >{EQUAL_DIVISION}</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <GuardsOrder setGuards={props.setGuards} isEvenTime={true} />
@@ -42,7 +39,7 @@ export const AccordionsGuardTimeDivision = (props) => {
                     aria-controls="panel2bh-content"
                     id="panel2bh-header"
                 >
-                    <Typography >הגדרת זמן שמירה</Typography>
+                    <Typography >{UNEQUAL_DIVISION}</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <ShiftTime />

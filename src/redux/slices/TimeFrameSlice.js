@@ -1,5 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { startGuardTime, endGuardTime } from '../../config/time/timeSetting';
+import {
+  startGuardTime,
+  endGuardTime,
+} from '../../config/inputs/TimeFrameInputs';
 
 const initialState = {
   startTime: startGuardTime,

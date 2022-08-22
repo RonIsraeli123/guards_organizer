@@ -2,6 +2,8 @@ import React from 'react'
 
 import moment from 'moment';
 
+import { RANDOM_ORDER, INORDER } from '../../../../../config/AccordionsGuardTimeDivision/guardOrderButtons'
+
 import Button from '@mui/material/Button';
 
 import { guardsGeneratorResult } from '../../../../../algo/generatorGuards'
@@ -57,10 +59,10 @@ export const GuardsOrder = (props) => {
     return (
         <div className="CalculateButton">
             <Button className='byOrderButton' variant="contained" size="small" onClick={(e) => dispatchGuards(true)} >
-                סדר רנדומלי
+                {RANDOM_ORDER}
             </Button>
             <Button className='byOrderButton' variant="contained" size="small" onClick={(e) => dispatchGuards(false)} >
-                סדר לפי הכנסה
+                {INORDER}
             </Button>
         </div>
     )

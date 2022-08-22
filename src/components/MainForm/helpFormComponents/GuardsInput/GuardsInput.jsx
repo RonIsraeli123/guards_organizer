@@ -1,14 +1,17 @@
 import React, { useState } from 'react'
 
+import { useSelector, useDispatch } from 'react-redux'
+import { addGuardName, deleteGuardName } from '../../../../redux/slices/GuardsNamesSlice'
+
+import { PLACEHOLDER_ADD_GUARD, TOOLTIP_TEXT, INVALID_GUARD_NAME_ALERT, EXIST_GUARD_ALERT } from '../../../../config/inputs/GuardsInput'
+
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Tooltip from '@mui/material/Tooltip';
-import AddCircleIcon from '@mui/icons-material/AddCircle';
-import AccountCircle from '@mui/icons-material/AccountCircle';
 import Chip from '@mui/material/Chip';
 
-import { useSelector, useDispatch } from 'react-redux'
-import { addGuardName, deleteGuardName } from '../../../../redux/slices/GuardsNamesSlice'
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import AccountCircle from '@mui/icons-material/AccountCircle';
 
 export const GuardsInput = () => {
 
@@ -21,10 +24,10 @@ export const GuardsInput = () => {
 
     const addToGuards = () => {
         if (!guardName || !guardName.trimStart().trimEnd()) {
-            return alert("יש להכניס שם חוקי");
+            return alert(INVALID_GUARD_NAME_ALERT);
         }
         if (guardsNames.includes(guardName)) {
-            return alert("שם כבר קיים!");
+            return alert(EXIST_GUARD_ALERT);
         }
         dispatch(addGuardName(guardName))
         setGuardName('');
@@ -44,10 +47,10 @@ export const GuardsInput = () => {
                     <AccountCircle />
                 </Grid>
                 <Grid item>
-                    <TextField className="element" id="input-with-icon-grid" label="שם שומר" value={guardName} onChange={(e) => setGuardName(e.target.value)} onKeyDown={handleKeyDown} />
+                    <TextField className="element" id="input-with-icon-grid" label={PLACEHOLDER_ADD_GUARD} value={guardName} onChange={(e) => setGuardName(e.target.value)} onKeyDown={handleKeyDown} />
                 </Grid>
             </Grid>
-            <Tooltip title="הוספת שומר">
+            <Tooltip title={TOOLTIP_TEXT}>
                 <AddCircleIcon style={{ fontSize: "2rem" }} onClick={(e) => { addToGuards(e) }} ></AddCircleIcon>
             </Tooltip>
             {guardsNames.length > 0 &&
