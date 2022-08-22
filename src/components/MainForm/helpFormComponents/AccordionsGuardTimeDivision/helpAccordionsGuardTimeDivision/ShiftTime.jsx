@@ -10,7 +10,7 @@ import Selector from 'react-select';
 
 export const ShiftTime = () => {
   const shiftTime = useSelector((state) => state.shiftTime.shiftTime)
-  const timeUnit = useSelector((state) => state.shiftTime.type)
+  const timeUnit = useSelector((state) => state.shiftTime.timeUnit)
 
   const dispatch = useDispatch()
 

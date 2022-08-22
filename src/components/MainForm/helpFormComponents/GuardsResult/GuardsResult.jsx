@@ -25,7 +25,6 @@ export const GuardsResult = (props) => {
     // const dispatch = useDispatch()
 
     const generateAgain = () => {
-        console.log("guardsNames: " + guardsNames, "startTime: " + startTime, "endTime: " + endTime, "shiftTime: " + shiftTime, "timeUnit: " + timeUnit, "isRandomOrder: " + isRandomOrder, "isEvenTime: " + isEvenTime)
         const guardResult = guardsGeneratorResult(guardsNames, startTime, endTime, shiftTime, timeUnit, isRandomOrder, isEvenTime)
         props.setGuards(guardResult)
         // dispatch(setGuards(guardResult))

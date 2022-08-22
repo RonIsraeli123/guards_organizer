@@ -1,53 +1,34 @@
 import { calculateGuards } from './calcGuards';
 
-import moment from 'moment';
-
 export const guardsGeneratorResult = (
   guardsNames,
   startTime,
   endTime,
-  shiftTime,
-  timeUnit,
+  shiftTimeInMinuteUnit,
   isRandomOrder,
   isEvenTime
 ) => {
   if (
-    !isValid(guardsNames, startTime, endTime, shiftTime, timeUnit, isEvenTime)
+    !isValid(guardsNames, startTime, endTime, shiftTimeInMinuteUnit, isEvenTime)
   ) {
     return [];
   }
-  if (isEvenTime) {
-    const countGuards = guardsNames.length;
-    const sumTime = moment(endTime).diff(moment(startTime), timeUnit);
-    const evenGuardTime =
-      sumTime / countGuards !== 0
-        ? sumTime / countGuards
-        : Math.ceil(sumTime / countGuards);
-    if (evenGuardTime > 6 * 60) {
-      alert('זמן השמירה יצא גדול מ6 שעות, אולי כדאי להגדיר זמן שמירה?');
-    }
-    shiftTime = evenGuardTime;
+
+  if (shiftTimeInMinuteUnit > 6 * 60) {
+    alert('זמן השמירה יצא גדול מ6 שעות, אולי כדאי להגדיר זמן שמירה?');
   }
+
   const calculateGuardsResult = calculateGuards(
     guardsNames,
     startTime,
     endTime,
-    shiftTime,
-    timeUnit,
+    shiftTimeInMinuteUnit,
     isRandomOrder
   );
-
   return calculateGuardsResult;
 };
 
-const isValid = (
-  guardsNames,
-  startTime,
-  endTime,
-  shiftTime,
-  timeUnit,
-  isEvenTime
-) => {
+const isValid = (guardsNames, startTime, endTime, shiftTime, isEvenTime) => {
   if (startTime === '' || endTime === '') {
     alert('יש להכניס תאריך התחלה ותאריך סיום');
     return false;
@@ -71,10 +52,6 @@ const isValid = (
     }
     if (startTime >= endTime) {
       alert('זמן סוף השמירה חייב להיות גדול מזמן התחלת השמירה');
-      return false;
-    }
-    if (!timeUnit === 'hour' || !timeUnit === 'minute') {
-      alert('יחידת הזמן לא תקינה');
       return false;
     }
   }

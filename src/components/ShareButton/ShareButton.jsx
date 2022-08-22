@@ -9,7 +9,7 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 export const ShareButton = (props) => {
 
     const generateToText = () => {
-        let message = `*רשימת שמות:*\n`;
+        let message = `*רשימת שמירות:*\n`;
         props.guards.forEach(guard => {
             message += `${guard.startTime.format('HH:mm')} - ${guard.endTime.format('HH:mm')}  *${guard.name.trim()}* \n`;
         });
