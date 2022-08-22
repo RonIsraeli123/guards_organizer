@@ -2,35 +2,31 @@ html {
   background-color: black;
 }
 
-.all {
+.allPage{
   background-image: url('./images/armyColor.jpg');
   background-repeat: repeat;
   background-size: cover;
   min-height: 100vh;
 }
 
-.select {
-  min-width: 115px;
-  max-width: 150px;
-  width: 8%;
-}
-
 .mainForm {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: row;
+  flex-direction: row; 
 }
 
-.element {
-  margin: 10px;
-}
-
-.CalculateButton {
+.shiftTime {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 5%;
+  flex-direction: column; 
+  margin: 5%;
+  gap: 8px;
+}
+
+.inputs {
+  margin: 10px !important;
 }
 
 .row {
@@ -38,19 +34,28 @@ html {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  flex-direction: row; 
+  gap: 8px;
 }
 
-.byOrderButton {
-  margin-left: 10px !important;
+.column{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column; 
+  gap: 8px;
 }
 
-.marginTop {
-  margin-top: 10px;
+.result{
+  border-radius: 2px;
+  background-color: white;
+  margin: 3%;
+  margin-bottom: 1em;
 }
 
-
-.MuiFormControl-root {
-  margin: 10px !important;
+.contactDetails{
+  text-align: center;
 }
 
 .MuiInputBase-input {

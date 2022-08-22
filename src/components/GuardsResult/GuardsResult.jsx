@@ -16,7 +16,6 @@ export const GuardsResult = (props) => {
     const startTime = useSelector((state) => state.timeFrame.startTime);
     const endTime = useSelector((state) => state.timeFrame.endTime);
     const shiftTime = useSelector((state) => state.shiftTime.shiftTime);
-    const timeUnit = useSelector((state) => state.shiftTime.type);
     const isRandomOrder = useSelector((state) => state.guardsOrder.isRandomPalces);
     const isEvenTime = useSelector((state) => state.guardsOrder.isEvenTime);
 
@@ -25,7 +24,7 @@ export const GuardsResult = (props) => {
     // const dispatch = useDispatch()
 
     const generateAgain = () => {
-        const guardResult = guardsGeneratorResult(guardsNames, startTime, endTime, shiftTime, timeUnit, isRandomOrder, isEvenTime)
+        const guardResult = guardsGeneratorResult(guardsNames, startTime, endTime, shiftTime, isRandomOrder, isEvenTime)
         props.setGuards(guardResult)
         // dispatch(setGuards(guardResult))
     }

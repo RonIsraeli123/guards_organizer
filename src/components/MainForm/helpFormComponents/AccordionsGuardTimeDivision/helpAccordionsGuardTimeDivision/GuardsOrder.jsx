@@ -57,11 +57,11 @@ export const GuardsOrder = (props) => {
     }
 
     return (
-        <div className="CalculateButton">
-            <Button className='byOrderButton' variant="contained" size="small" onClick={(e) => dispatchGuards(true)} >
+        <div className="row">
+            <Button variant="contained" size="small" onClick={(e) => dispatchGuards(true)} >
                 {RANDOM_ORDER}
             </Button>
-            <Button className='byOrderButton' variant="contained" size="small" onClick={(e) => dispatchGuards(false)} >
+            <Button variant="contained" size="small" onClick={(e) => dispatchGuards(false)} >
                 {INORDER}
             </Button>
         </div>

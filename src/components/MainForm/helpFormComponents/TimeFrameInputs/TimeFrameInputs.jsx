@@ -22,10 +22,10 @@ export const TimeFrameInputs = () => {
     }
 
     return (
-        <div className="row">
+        <div>
             <form noValidate>
                 <TextField
-                    className='element'
+                    className='inputs'
                     id="datetime-local"
                     label={placeHolderStartTime}
                     type="datetime-local"
@@ -36,7 +36,7 @@ export const TimeFrameInputs = () => {
                     }}
                 />
                 <TextField
-                    className='element'
+                    className='inputs'
                     id="datetime-local"
                     label={placeHolderEndTime}
                     type="datetime-local"

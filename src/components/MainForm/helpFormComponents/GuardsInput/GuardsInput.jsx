@@ -6,8 +6,8 @@ import { addGuardName, deleteGuardName } from '../../../../redux/slices/GuardsNa
 import { PLACEHOLDER_ADD_GUARD, TOOLTIP_TEXT, INVALID_GUARD_NAME_ALERT, EXIST_GUARD_ALERT } from '../../../../config/inputs/GuardsInput'
 
 import TextField from '@mui/material/TextField';
-import Grid from '@mui/material/Grid';
 import Tooltip from '@mui/material/Tooltip';
+import InputAdornment from '@mui/material/InputAdornment';
 import Chip from '@mui/material/Chip';
 
 import AddCircleIcon from '@mui/icons-material/AddCircle';
@@ -41,33 +41,35 @@ export const GuardsInput = () => {
     }
 
     return (
-        <div className="row">
-            <Grid className="row" container spacing={1} alignItems="flex-end" >
-                <Grid item>
-                    <AccountCircle />
-                </Grid>
-                <Grid item>
-                    <TextField className="element" id="input-with-icon-grid" label={PLACEHOLDER_ADD_GUARD} value={guardName} onChange={(e) => setGuardName(e.target.value)} onKeyDown={handleKeyDown} />
-                </Grid>
-            </Grid>
-            <Tooltip title={TOOLTIP_TEXT}>
-                <AddCircleIcon style={{ fontSize: "2rem" }} onClick={(e) => { addToGuards(e) }} ></AddCircleIcon>
-            </Tooltip>
-            {guardsNames.length > 0 &&
-                <div className="row" style={{ marginTop: "15px" }}>
-                    {guardsNames.map((name, index) => (
-                        <div key={index}>
-                            <Chip
-                                className=""
-                                size="small"
-                                label={`(${index + 1}) ${name}`}
-                                onDelete={() => dispatch(deleteGuardName(guardName))}
-                                color="default"
-                            />
-                        </div>
-                    ))}
-                </div>
-            }
-        </div >
+        <div>
+            <div className="column">
+                <TextField InputProps={{
+                    startAdornment: (
+                        <InputAdornment position="start">
+                            <AccountCircle />
+                        </InputAdornment>
+                    ),
+                }} className="inputs" id="outlined-basic" label={PLACEHOLDER_ADD_GUARD} value={guardName} onChange={(e) => setGuardName(e.target.value)} onKeyDown={handleKeyDown} />
+                <Tooltip title={TOOLTIP_TEXT}>
+                    <AddCircleIcon style={{ fontSize: "2rem" }} onClick={(e) => { addToGuards(e) }} ></AddCircleIcon>
+                </Tooltip>
+            </div >
+            <div className="row">
+                {guardsNames.length > 0 &&
+                    <div className="row" style={{ marginTop: "15px" }}>
+                        {guardsNames.map((name, index) => (
+                            <div key={index}>
+                                <Chip
+                                    size="small"
+                                    label={`(${index + 1}) ${name}`}
+                                    onDelete={() => dispatch(deleteGuardName(guardName))}
+                                    color="default"
+                                />
+                            </div>
+                        ))}
+                    </div>
+                }
+            </div>
+        </div>
     )
 }

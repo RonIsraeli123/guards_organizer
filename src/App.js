@@ -12,7 +12,7 @@ export const App = () => {
   const [guards, setGuards] = useState([]);
 
   return (
-    <div className='all'>
+    <div className='allPage'>
       <MainForm setGuards={setGuards} />
       <GuardsResult guards={guards} setGuards={setGuards} />
       <ContactDetails />

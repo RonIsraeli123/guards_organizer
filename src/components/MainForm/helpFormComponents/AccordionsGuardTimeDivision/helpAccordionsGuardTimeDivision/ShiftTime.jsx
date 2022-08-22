@@ -21,10 +21,9 @@ export const ShiftTime = () => {
   ]);
 
   return (
-    <div>
+    <div className='shiftTime'>
       <TextField id="input-with-icon-grid" type="number" label={GUARD_TIME} value={shiftTime} onChange={(e) => dispatch(setShiftTime(e.target.value))} />
       <Selector
-        className="select"
         placeholder={timeUnit === "hour" ? 'שעות' : 'דקות'}
         value={timeUnit}
         onChange={(e) => dispatch(setTimeUnit(e.value))}
