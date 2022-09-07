@@ -7,7 +7,7 @@ export const calculateGuards = (
   guardsNames,
   givenStartTime,
   givenEndTime,
-  shiftTime,
+  shiftTimeInMinuteUnit,
   isRandomOrder
 ) => {
   let guardNameArray = guardsNames;
@@ -16,55 +16,70 @@ export const calculateGuards = (
     guardNameArray = [...arrayShuffle([...guardsNames])];
   }
 
-  let counter = 0;
-  let guards = [];
-  let startShift = moment(givenStartTime);
-  let endShift = moment(givenEndTime);
+  let startShifts = moment(givenStartTime);
+  let endShifts = moment(givenEndTime);
 
-  const sumTime = endShift.diff(moment(givenStartTime), MINUTE_TIME_UNITE);
+  const sumTime = endShifts.diff(moment(givenStartTime), MINUTE_TIME_UNITE);
 
   // if shift guard is all time they need to guard
-  if (sumTime < shiftTime) {
-    guards.push({
-      name: guardNameArray[counter],
-      startTime: startShift,
-      endTime: endShift,
-    });
-    return guards;
+  if (sumTime < shiftTimeInMinuteUnit) {
+    return {
+      name: guardNameArray[0],
+      startTime: startShifts,
+      endTime: endShifts,
+    };
   }
 
-  // until the end of shifts...
-  while (
-    !(
-      moment(startShift).add(shiftTime, MINUTE_TIME_UNITE) >
-      moment(givenEndTime)
-    )
-  ) {
-    let endShift = moment(startShift).add(shiftTime, MINUTE_TIME_UNITE);
+  const guardResult = addGuards(
+    guardNameArray,
+    givenStartTime,
+    givenEndTime,
+    shiftTimeInMinuteUnit
+  );
+  return guardResult;
+};
+
+const addGuards = (
+  guardNameArray,
+  givenStartTime,
+  givenEndTime,
+  shiftTimeInMinuteUnit
+) => {
+  let guardResult = [];
+  let counter = 0;
+  let endShifts = moment(givenEndTime);
+
+  let startShift = moment(givenStartTime);
+  while (startShift.isBefore(endShifts)) {
+    const diffStartShiftEndShifts = endShifts.diff(
+      startShift,
+      MINUTE_TIME_UNITE
+    );
+    const endShift = moment(startShift).add(
+      shiftTimeInMinuteUnit,
+      MINUTE_TIME_UNITE
+    );
+    // if guard have more then one shift
     if (counter === guardNameArray.length) {
       counter = 0;
     }
-    guards.push({
-      name: guardNameArray[counter],
-      startTime: startShift,
-      endTime: endShift,
-    });
-    startShift = endShift;
-    counter++;
-  }
-
-  // the last shift, if small then the guard shift
-  if (startShift.isBefore(endShift)) {
-    if (startShift.add(shiftTime / 4, MINUTE_TIME_UNITE) > endShift) {
-      guards[counter - 1].endTime = endShift;
-    } else if (counter === guardNameArray.length) {
-      counter = 0;
-      guards.push({
+    if (diffStartShiftEndShifts > shiftTimeInMinuteUnit) {
+      // normal insert
+      guardResult.push({
         name: guardNameArray[counter],
-        startTime: startShift,
-        endTime: endShift,
+        startTime: moment(startShift),
+        endTime: moment(endShift),
+      });
+    } else {
+      // last guard with partial guard
+      guardResult.push({
+        name: guardNameArray[counter],
+        startTime: moment(startShift),
+        endTime: moment(endShifts),
       });
     }
+    startShift.add(shiftTimeInMinuteUnit, MINUTE_TIME_UNITE);
+    counter++;
   }
-  return guards;
+  return guardResult;
 };
